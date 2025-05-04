@@ -274,6 +274,7 @@ Function Get-MyService{
   Get-Service $ServiceName -DependentServices
  }
 
+  # remove the Service or Services without deleting the parent service or child services
  Function Remove-MyService{
   [CmdletBinding()]
   
