@@ -273,4 +273,24 @@ Function Get-MyService{
   
   Get-Service $ServiceName -DependentServices
  }
+
+ Function Remove-MyService{
+  [CmdletBinding()]
+  
+  param(
+  [Parameter(Mandatory)]
+  [string]$ServiceName
+  )
+ 
+  $s= Get-WmiObject -Class Win32_Service -Filter "Name = '$ServiceName'"
+ 
+   if($s.State -eq "Running"){
+     Write-Host "The Service $ServiceName is running, please stop it before removing it" -ForegroundColor Yellow -BackgroundColor Red
+   Break
+   }
+   else{
+     $s | Remove-Service 
+     Write-Host "The Service $ServiceName removed" -ForegroundColor White -BackgroundColor Green
+   Break
+   }
  #endregion
