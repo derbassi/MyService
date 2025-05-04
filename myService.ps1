@@ -294,4 +294,5 @@ Function Get-MyService{
      Write-Host "The Service $ServiceName removed" -ForegroundColor White -BackgroundColor Green
    Break
    }
+  }
  #endregion
